@@ -1,10 +1,10 @@
 CREATE TABLE short_urls (
         id SERIAL PRIMARY KEY,
         alias VARCHAR(50) UNIQUE NOT NULL,
-        original_url TEXT NOT NULL,
+        original_url TEXT NOT NULL ,
 
         type VARCHAR(20) NOT NULL DEFAULT 'normal'
-            CHECK (type IN ('normal', 'scheduled', 'expiring', 'protected')),
+            CHECK (type IN ('normal', 'scheduled', 'expiring', 'protect')),
 
         activation_date DATE NULL,
         expiration_date DATE NULL,
@@ -16,6 +16,7 @@ CREATE TABLE short_urls (
 
         is_custom_alias BOOLEAN DEFAULT FALSE,
 
+        ip_address VARCHAR(45) NULL,
         created_at DATE DEFAULT CURRENT_DATE,
         updated_at DATE DEFAULT CURRENT_DATE
 );
