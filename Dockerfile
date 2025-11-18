@@ -5,7 +5,7 @@ COPY . .
 RUN gradle clean bootJar --no-daemon
 
 # Stage 2: Run the application
-FROM openjdk:21-jdk-slim
+FROM openjdk:21-ea-21-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE 8081
