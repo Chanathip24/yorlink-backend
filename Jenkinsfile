@@ -4,7 +4,6 @@ pipeline {
     environment {
         REGISTRY = "docker.io/chanathipcha24"
         IMAGE_NAME = "yorlink-backend"
-        POSTGRES_PORT = "5432"
         KUBE_DEPLOYMENT = "k8s/backend-deployment.yaml"
     }
 
