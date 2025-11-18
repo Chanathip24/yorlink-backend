@@ -54,7 +54,7 @@ pipeline {
                             --from-literal=POSTGRES_USER=$POSTGRES_USER \\
                             --from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \\
                             --from-literal=POSTGRES_HOST=$POSTGRES_HOST \\
-                            --from-literal=APP_CORS_ALLOWED_ORIGINS=$APP_CORS_ALLOWED_ORIGINS
+                            --from-literal=APP_CORS_ALLOWED_ORIGINS=$APP_CORS_ALLOWED_ORIGINS \\
                             --from-literal=POSTGRES_PORT=$POSTGRES_PORT
                     """
                 }
