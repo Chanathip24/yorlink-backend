@@ -45,6 +45,7 @@ pipeline {
                     string(credentialsId: 'POSTGRES_PASSWORD', variable: 'POSTGRES_PASSWORD'),
                     string(credentialsId: 'POSTGRES_HOST', variable: 'POSTGRES_HOST'),
                     string(credentialsId: 'APP_CORS_ALLOWED_ORIGINS', variable: 'APP_CORS_ALLOWED_ORIGINS')
+                    string(credentialsId: 'POSTGRES_PORT', variable: 'POSTGRES_PORT')
                 ]) {
                     sh """
                         microk8s kubectl delete secret yorlink-backend-env --ignore-not-found
