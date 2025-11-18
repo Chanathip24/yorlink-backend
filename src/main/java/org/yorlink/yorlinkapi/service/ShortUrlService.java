@@ -107,4 +107,8 @@ public class ShortUrlService {
         shortUrlRepository.findById(shortUrlId).orElseThrow(()-> new RuntimeException("No such shortUrl to delete"));
         shortUrlRepository.deleteById(shortUrlId);
     }
+    public ShortUrlResponseDetailDtos getShortUrlFromAlias(String alias){
+        ShortUrlEntity shortUrlEntity = shortUrlRepository.findByAlias(alias).orElseThrow(()-> new RuntimeException("No such shortUrl"));
+        return shortUrlMapper.shortUrlResponseDetailDtos(shortUrlEntity);
+    }
 }

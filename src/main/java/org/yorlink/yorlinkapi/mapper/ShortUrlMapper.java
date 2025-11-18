@@ -20,14 +20,17 @@ public class ShortUrlMapper {
 
 
     public ShortUrlResponseDetailDtos shortUrlResponseDetailDtos(ShortUrlEntity shortUrlEntity){
-        Boolean isActive = false;
 
         return ShortUrlResponseDetailDtos.builder()
                 .shortUrlType(shortUrlEntity.getType())
+                .originalUrl(shortUrlEntity.getOriginalUrl())
                 .id(shortUrlEntity.getId())
                 .alias(shortUrlEntity.getAlias())
                 .totalClicks(shortUrlEntity.getCurrentClicks())
                 .isActive(shortUrlEntity.isActive())
+                .expirationDate(shortUrlEntity.getExpirationDate())
+                .activationDate(shortUrlEntity.getActivationDate())
+                .passwordHint(shortUrlEntity.getPasswordHint())
                 .createdAt(shortUrlEntity.getCreatedAt())
                 .build();
     }

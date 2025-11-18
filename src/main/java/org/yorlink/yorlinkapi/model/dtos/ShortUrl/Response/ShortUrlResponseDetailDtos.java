@@ -11,8 +11,12 @@ import java.time.LocalDate;
 public class ShortUrlResponseDetailDtos {
     private Long id;
     private String alias;
+    private String originalUrl;
     private ShortUrlEntity.ShortUrlType shortUrlType;
     private LocalDate createdAt;
     private Integer totalClicks;
     private Boolean isActive;
+    private LocalDate activationDate;
+    private LocalDate expirationDate;
+    private String passwordHint;
 }

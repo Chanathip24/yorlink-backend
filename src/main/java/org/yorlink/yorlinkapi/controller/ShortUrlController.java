@@ -29,14 +29,20 @@ public class ShortUrlController {
     }
 
     @GetMapping("/detail")
-    public ResponseEntity<ApiResponse<ShortUrlResponseDetailDtos>> getShortUrlDetail(@RequestParam Long id){
-        ShortUrlResponseDetailDtos result = shortUrlService.getShortUrl(id);
+    public ResponseEntity<ApiResponse<ShortUrlResponseDetailDtos>> getShortUrlDetail(@RequestParam String alias){
+        ShortUrlResponseDetailDtos result = shortUrlService.getShortUrlFromAlias(alias);
         return ResponseEntity.ok(ApiResponse.success(result));
     }
 
     @PostMapping("/protected")
     public ResponseEntity<ApiResponse<Object>> accessProtectedUrl(@RequestBody ProtectedEntryShortRequestDto request){
         shortUrlService.protectedUrlShortUrl(request);
+        return ResponseEntity.ok(ApiResponse.success(null));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse<Object>> deleteShortUrl(@PathVariable Long id){
+        shortUrlService.deleteShortUrl(id);
         return ResponseEntity.ok(ApiResponse.success(null));
     }
 }
