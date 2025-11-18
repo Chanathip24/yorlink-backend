@@ -58,8 +58,9 @@ metadata:
 spec:
   selector:
     app: yorlink-backend
+  type: NodePort          # change from ClusterIP to NodePort
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
-  type: ClusterIP
+      port: 8081          # internal cluster port
+      targetPort: 8081    # container port
+      nodePort: 30081     # port exposed on your node (choose 30000-32767)

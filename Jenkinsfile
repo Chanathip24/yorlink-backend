@@ -67,11 +67,7 @@ pipeline {
                 sh "microk8s kubectl apply -f $KUBE_DEPLOYMENT"
             }
         }
-        stage('Deploy Ingress') {
-            steps {
-                sh "microk8s kubectl apply -f k8s/ingress-deployment.yaml"
-            }
-        }
+
 
         stage('Verify Deployment') {
             steps {
