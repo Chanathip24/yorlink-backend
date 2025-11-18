@@ -4,7 +4,7 @@ pipeline {
     environment {
         REGISTRY = "docker.io/chanathipcha24"
         IMAGE_NAME = "yorlink-backend"
-        SERVER_PORT = "8081"
+        POSTGRES_PORT = "5432"
         KUBE_DEPLOYMENT = "k8s/backend-deployment.yaml"
     }
 
@@ -55,6 +55,7 @@ pipeline {
                             --from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \\
                             --from-literal=POSTGRES_HOST=$POSTGRES_HOST \\
                             --from-literal=APP_CORS_ALLOWED_ORIGINS=$APP_CORS_ALLOWED_ORIGINS
+                            --from-literal=POSTGRES_PORT=$POSTGRES_PORT
                     """
                 }
             }
@@ -64,6 +65,11 @@ pipeline {
             steps {
                 echo "Deploying backend to MicroK8s..."
                 sh "microk8s kubectl apply -f $KUBE_DEPLOYMENT"
+            }
+        }
+        stage('Deploy Ingress') {
+            steps {
+                sh "microk8s kubectl apply -f k8s/ingress-deployment.yaml"
             }
         }
 
