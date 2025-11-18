@@ -50,7 +50,7 @@ pipeline {
                     sh """
                         microk8s kubectl delete secret yorlink-backend-env --ignore-not-found
                         microk8s kubectl create secret generic yorlink-backend-env \\
-                            --from-literal=POSTGRES_DB="yorlinkDB" \\
+                            --from-literal=POSTGRES_DB=$POSTGRES_DB \\
                             --from-literal=POSTGRES_USER=$POSTGRES_USER \\
                             --from-literal=POSTGRES_PASSWORD=$POSTGRES_PASSWORD \\
                             --from-literal=POSTGRES_HOST=$POSTGRES_HOST \\

@@ -29,8 +29,10 @@ spec:
                   name: yorlink-backend-env
                   key: APP_CORS_ALLOWED_ORIGINS
             - name: POSTGRES_DB
-             
-
+              valueFrom:
+                secretKeyRef:
+                  name: yorlink-backend-env
+                  key: POSTGRES_DB
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
